@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- <nav th:replace="layours::header"></nav> -->
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/css/formatting.css}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+
+<nav th:replace="layouts::navbar"></nav>
+
+<body>
+
+<style> 
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+   -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+
+input[type=text]:focus {
+  width: 100%;
+}
+
+select {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+</style>
+
+
+	<div class="container">
+		<!-- 	the object must be the same as Model object  -->
+		<form action="/posts/save" th:object="${post}" method="POST">
+		<br>
+		<br>
+	
+	
+		<h3>Create a Post!</h3>
+		<input type="text" placeholder="Post name" th:field="${post.title}">
+		<br>
+		
+		<h3>Date</h3>
+		<input type="text" placeholder="Date" th:field="${post.date}">
+		<br>
+		<h3>Post</h3>
+		<textarea type="text" placeholder="Post Body"
+				th:field="${post.body}"></textarea>
+		
+		
+		<h5>Confidence Level</h5>
+
+			<select th:field="${post.confidence}">
+				<option th:value="SoSo">So-So</option>
+				<option th:value="Pretty">Pretty</option>
+				<option th:value="100%">100%</option>
+				<option th:value="Super">Super</option>
+			</select> 
+			<br>
+	
+
+		<h5>Assign to User (Choose all that apply)</h3>
+			<select th:field = "*{users}" multiple = "multiple">
+				<option th:each = "user : ${allUsers}"
+						th:value = "${user.userId}"
+						th:text = "${user.firstName}">
+			</select>
+			
+
+			<button type="submit">Change the World!</button>
+
+		</form>
+	</div>
+
+</body>
+</html>

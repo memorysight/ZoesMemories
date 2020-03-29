@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:replace="layouts :: header"></head>
+	
+	<body>
+	
+	<nav th:replace="layouts :: navbar"></nav>
+	
+		<div class="container">
+			<h3>Post Directory</h3>
+			<hr>
+			
+			<!--  Add New Employee Button -->
+			<a th:href="@{/posts/new}"
+				class="btn btn-primary btn-sm mb-3"> 
+				Create a new Post
+			</a> 
+			<br></br>
+			
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Title</th>
+						<th>Post Date</th>
+						<th>Post Body</th>
+						<th>Post Confidence</th>
+						<!-- <th>Item Kitchens</th> -->
+					</tr>
+				</thead>		
+				<tbody>
+					<tr th:each="aPost : ${posts}">
+						<td th:text="${aPost.title}"/>
+						<td th:text="${aPost.date}"/>
+						<td th:text="${aPost.body}"/>
+						<td th:text="${aPost.confidence}"/>
+					<!-- 	<td th:text="${anItem.kitchens}"/> -->
+					</tr>
+				</tbody>
+			
+			</table>
+		</div>
+	</body>
+	
+</html>

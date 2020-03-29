@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- <nav th:replace="layours::header"></nav> -->
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/css/formatting.css}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+
+<nav th:replace="layouts::navbar"></nav>
+
+<body>
+
+	<style>
+input[type=text] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	background-color: white;
+	background-image: url('searchicon.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding-left: 40px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+	border: 3px solid #555;
+}
+
+input[type=text]:focus {
+	width: 100%;
+}
+
+select {
+	width: 100%;
+	padding: 16px 20px;
+	border: none;
+	border-radius: 4px;
+	background-color: #f1f1f1;
+}
+</style>
+
+
+
+
+	<div class="container">
+		<!-- 	the object must be the same as Model object  -->
+		<form action="/users/save" th:object="${user}" method="POST">
+		
+			<h3>Create a User</h3>
+			<input type="text" placeholder="First Name"
+				th:field="${user.firstName}"> <input type="text"
+				placeholder="Last Name" th:field="${user.lastName}">
+
+			<h4>Set a Password</h4>
+			<input type="password" placeholder="Password"
+				th:field="${user.password}">
+
+			<h3>Email</h3>
+			<input type="text" placeholder="Email" th:field="${user.email}">
+
+
+
+			<h4>Affiliation</h4>
+			<select th:field="${user.role}">
+				<option th:value="CASUAL">Casual</option>
+				<option th:value="PROFESSIONAL">Professional</option>
+				<option th:value="ADMIN">Admin</option>
+
+			</select>
+
+			<h3>Update your Photo</h3>
+			<input type="text" placeholder="Upload your image"
+				th:field="${user.image}">
+
+
+
+			<!-- IMPORTANT AREA WHERE THE TYPE OF EVENT IS POPULATED -->
+
+			<!-- 	*{events} is actually ${customer.events} -->
+			<h5>
+				(Re)Assign your posts (Choose all that apply)
+				</h3>
+				<select th:field="*{posts}" multiple="multiple">
+					<option th:each="post : ${allPosts}" th:value="${post.postId}"
+						th:text="${post.title}">
+				</select>
+
+				<!-- End of the first customer screen where they select the Event Type which 
+				will become populated after Admin creates in in the Event Creation Page -->
+
+				<!-- 	<input type="text" placeholder="First Name"
+				th:field="${customer.firstName}"> 
+					
+			<input type="text" placeholder="Last Name"
+				th:field="${customer.lastName}">  -->
+
+
+
+				<button type="submit">Create</button>
+		</form>
+	</div>
+
+</body>
+</html>

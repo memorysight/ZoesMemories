@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- <nav th:replace="layours::header"></nav> -->
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<link rel="stylesheet" th:href="@{/css/formatting.css}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</head>
+
+<nav th:replace="layouts::navbar"></nav>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer+SC|Roboto+Condensed|Roboto+Mono&display=swap');
+
+.title{
+font-family: 'Roboto Mono', monospace;
+font-family: 'IM Fell Great Primer SC', serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Lora', serif;
+font-family: 'Muli', sans-serif;
+
+}
+</style>
+
+
+<!-- <div align="center">
+<h4 class="title">  Current Users </h4>
+
+
+<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+		<tr>
+			<th>  User First Name   </th>
+			<th>  User Last Name  </th>
+			<th>  User Email  </th>
+			<th>  User Role  </th>
+		
+		</tr>
+		</thead>
+		<tbody>					has to be the same as the object used in the method
+			<tr th:each="aUser : ${usersList}">
+				<td th:text="${aUser.firstName}"/>
+				<td th:text="${aUser.lastName}"/>
+				<td th:text="${aUser.email}"/>
+				<td th:text="${aUser.role}"/>
+			</tr>
+		
+		
+		</tbody>
+		
+
+</table>
+</div> -->
+<br>
+<br>
+<div align="center">
+<h4 class="title">  Posts </h4>
+
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>  Post Title   </th>
+			<th>  Post Date   </th>
+			<th>  Post Body   </th>
+			<th>  Post Confidence  </th>
+		
+		</tr>
+		</thead>
+		<tbody>					<!-- has to be the same as the object used in the method -->
+			<tr th:each="aPost : ${postsList}">
+				<td th:text="${aPost.title}"/>
+				<td th:text="${aPost.date}"/>  <!-- does this change since its a double? -->
+				<td th:text="${aPost.body}"/>
+				<td th:text="${aPost.confidence}"/>
+			
+			</tr>
+		
+		
+		</tbody>
+		
+
+</table>
+</div>
+
+<br>
+<br>
+
+<div align="center">
+<h4 class="title">  Users </h4>
+
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>  First Name   </th>
+			<th>  Last Name   </th>
+			<th>  Password  </th>
+			<th>  Role   </th>
+			<th>  Image   </th>
+		
+		
+		</tr>
+		</thead>
+		<tbody>					<!-- has to be the same as the object used in the method -->
+			<tr th:each="aUser : ${usersList}">
+				<td th:text="${aUser.firstName}"/>
+				<td th:text="${aUser.lastName}"/>
+				<td th:text="${aUser.password}"/>  <!-- does this change since its a double? -->
+				<td th:text="${aUser.role}"/>
+				<td th:text="${aUser.image}"/>
+				
+				
+			
+			</tr>
+		
+		
+		</tbody>
+		
+
+</table>
+</div>
+
+<!-- <div align="center">
+<h4 class="title">  Customers </h4>
+
+<table class="table table-bordered table-striped">
+	<thead class="thead-dark">
+		<tr>
+			<th>  First Name  </th>
+			<th>  Last Name   </th>
+			<th>  Phone </th>
+			<th>  Email   </th>
+			<th>  Address </th>
+			<th>  City   </th>
+			<th>  State   </th>
+			<th>   Zip   </th>
+		    <th>  Order   </th>  
+		    <th>  Kitchen Chosen   </th>  newly created field in customer table Event Id
+		
+		</tr>
+		</thead>
+		<tbody>					has to be the same as the object used in the method
+			<tr th:each="aCustomer : ${customersList}">
+				<td th:text="${aCustomer.firstName}"/>
+				<td th:text="${aCustomer.lastName}"/>
+				<td th:text="${aCustomer.phone}"/>
+				<td th:text="${aCustomer.email}"/>
+				<td th:text="${aCustomer.address}"/>
+				<td th:text="${aCustomer.city}"/>
+				<td th:text="${aCustomer.state}"/>
+				<td th:text="${aCustomer.zip}"/>
+			  	<td th:text="${aCustomer.items}"/> 
+			  	<td th:text="${aCustomer.kitchens}"/> 
+			</tr>
+		
+		
+		</tbody>
+		
+
+</table>
+</div> -->
+
+
+</body>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:replace="layouts :: header"></head>
+	
+	<body>
+	
+	<nav th:replace="layouts :: navbar"></nav>
+	
+		<div class="container">
+			<h3>Users</h3>
+			<hr>
+			
+			<!--  Add New Employee Button -->
+			<a th:href="@{/users/new}"
+				class="btn btn-primary btn-sm mb-3"> 
+				Create a User
+			</a> 
+			<br></br>
+			
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Password</th>
+						<th>Email</th>
+					 	<th>User Image</th>  
+					 	<!-- <th>Kitchen's Customer(s)</th>  -->
+					 <!-- 	<th>Action</th> -->
+						
+					</tr>
+				</thead>		
+				<tbody>
+					<tr th:each="aUser : ${users}">
+						<td th:text="${aUser.firstName}"/>
+						<td th:text="${aUser.lastName}"/>
+						<td th:text="${aUser.password}"/>
+						<td th:text="${aUser.email}"/>
+						<td th:text="${aUser.image}"/>
+				<!-- 		<td th:text="${aKitchen.image}"/> -->
+				<!-- 	    <td th:text="${aKitchen.items}"/>  -->
+					 <!--    <td th:text="${aKitchen.customers}"/>  -->
+						 
+			 	<!-- 		<td>
+				 	<a th:href="@{/edit/ + ${aCustomer.customerId}}">Edit</a>
+			
+						&nbsp;&nbsp;&nbsp;
+					<a th:href="@{/delete/ +${aCustomer.customerId}}">Delete</a>  
+					</td> -->
+					
+					</tr> 
+				</tbody>
+			
+			</table>
+		</div>
+	</body>
+	
+</html>
