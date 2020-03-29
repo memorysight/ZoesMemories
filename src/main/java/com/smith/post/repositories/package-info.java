@@ -1,1 +1,0 @@
-package com.smith.post.repositories;
