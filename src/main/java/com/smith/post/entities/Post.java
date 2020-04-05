@@ -23,6 +23,7 @@ public class Post {
 	private String title;
 	private String date;
 	private String body;
+	private String image;
 	
 
 	public String getConfidence() {
@@ -34,7 +35,18 @@ public class Post {
 	}
 
 	private String confidence;
+	public float Money;
 	
+	
+
+	public float getMoney() {
+		return Money;
+	}
+
+	public void setMoney(float money) {
+		Money = money;
+	}
+
 	@JsonIgnore
 	@ManyToMany(cascade = {CascadeType.DETACH, 
 			CascadeType.MERGE, 
@@ -86,6 +98,16 @@ public class Post {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	
+	
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public Post(String title, String date, String body) {
 		super();
@@ -104,6 +126,34 @@ public class Post {
 		this.users = users;
 	}
 	
+	
+	
+	public Post(String title, String date, String body, String image, String confidence, List<User> users) {
+		super();
+		this.title = title;
+		this.date = date;
+		this.body = body;
+		this.image = image;
+		this.confidence = confidence;
+		this.users = users;
+	}
+	
+	
+	
+	
+
+	public Post(String title, String date, String body, String image, String confidence, float money,
+			List<User> users) {
+		super();
+		this.title = title;
+		this.date = date;
+		this.body = body;
+		this.image = image;
+		this.confidence = confidence;
+		Money = money;
+		this.users = users;
+	}
+
 	public Post() {
 		
 	}

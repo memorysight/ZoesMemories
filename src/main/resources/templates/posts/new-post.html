@@ -67,7 +67,7 @@ select {
 		<br>
 	
 	
-		<h3>Create a Post!</h3>
+		<h3>Create a Sleak!</h3>
 		<input type="text" placeholder="Post name" th:field="${post.title}">
 		<br>
 		
@@ -77,6 +77,10 @@ select {
 		<h3>Post</h3>
 		<textarea type="text" placeholder="Post Body"
 				th:field="${post.body}"></textarea>
+				
+		<h3>Image</h3>
+		<textarea type="text" placeholder="Image"
+				th:field="${post.image}"></textarea>
 		
 		
 		<h5>Confidence Level</h5>
@@ -88,9 +92,13 @@ select {
 				<option th:value="Super">Super</option>
 			</select> 
 			<br>
+			
+			<h3>Money</h3>
+		<textarea type="number" placeholder="Money"
+				th:field="${post.money}"></textarea>
 	
 
-		<h5>Assign to User (Choose all that apply)</h3>
+		<h5>Send to a User (Choose all that apply)</h3>
 			<select th:field = "*{users}" multiple = "multiple">
 				<option th:each = "user : ${allUsers}"
 						th:value = "${user.userId}"
@@ -98,7 +106,7 @@ select {
 			</select>
 			
 
-			<button type="submit">Change the World!</button>
+			<button th:href="@{/http://localhost:3000/posts}"type="submit">Will they LOL?</button>
 
 		</form>
 	</div>

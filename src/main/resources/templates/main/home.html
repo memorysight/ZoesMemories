@@ -69,15 +69,17 @@ font-family: 'Muli', sans-serif;
 <br>
 <br>
 <div align="center">
-<h4 class="title">  Posts </h4>
+<h4 class="title">  Sleaks </h4>
 
 <table class="table table-bordered table-striped">
 	<thead class="thead-dark">
 		<tr>
-			<th>  Post Title   </th>
-			<th>  Post Date   </th>
-			<th>  Post Body   </th>
-			<th>  Post Confidence  </th>
+			<th>  Sleak Title   </th>
+			<th>  Sleak Date   </th>
+			<th>  Sleak Body   </th>
+			<th>  Sleak Image   </th>
+			<th>  Sleak Confidence  </th>
+			<th>  Sleak Dollar Amount  </th>
 		
 		</tr>
 		</thead>
@@ -86,7 +88,9 @@ font-family: 'Muli', sans-serif;
 				<td th:text="${aPost.title}"/>
 				<td th:text="${aPost.date}"/>  <!-- does this change since its a double? -->
 				<td th:text="${aPost.body}"/>
+				<td th:text="${aPost.image}"/>
 				<td th:text="${aPost.confidence}"/>
+				<td th:text="${aPost.money}"/>
 			
 			</tr>
 		

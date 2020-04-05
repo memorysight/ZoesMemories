@@ -53,7 +53,8 @@ public class PostController {
 		
 		//use to prevent duplicate submissions
 		postRepo.save(post);
-		return "redirect:/posts/new";
+//		return "redirect:/posts/new"; redirects back to thymeleaf
+		return "redirect:http://localhost:3000/posts";
 		
 	}
 	

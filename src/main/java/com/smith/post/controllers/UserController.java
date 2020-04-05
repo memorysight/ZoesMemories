@@ -32,7 +32,7 @@ public class UserController {
 	@GetMapping
 	public String displayUsers(Model model) {
 	List<User>users = userRepo.findAll();
-	model.addAttribute("user", users);
+	model.addAttribute("users", users);
 	return "users/list-users";
 	}
 	
@@ -41,7 +41,7 @@ public class UserController {
 	public String displayUserForm(Model model) {
 		User aUser = new User();
 		List<Post> posts = postRepo.findAll();  //new
-		model.addAttribute("allPost", posts);  //new
+		model.addAttribute("allPosts", posts);  //new
 		
 		model.addAttribute("user", aUser);
 		return "users/new-user";
