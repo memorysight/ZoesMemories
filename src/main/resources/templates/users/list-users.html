@@ -27,7 +27,7 @@
 						<th>Email</th>
 					 	<!-- <th>User Image</th>   -->
 					 	<!-- <th>Kitchen's Customer(s)</th>  -->
-					 <!-- 	<th>Action</th> -->
+					  	 <th>Action</th>  
 						
 					</tr>
 				</thead>		
@@ -41,13 +41,13 @@
 				<!-- 		<td th:text="${aKitchen.image}"/> -->
 				<!-- 	    <td th:text="${aKitchen.items}"/>  -->
 					 <!--    <td th:text="${aKitchen.customers}"/>  -->
-						 
-			 	<!-- 		<td>
-				 	<a th:href="@{/edit/ + ${aCustomer.customerId}}">Edit</a>
+				
+				 		<td>
+				 	<a th:href="@{'/users/update/'+${aUser.userId}}">Edit</a>
 			
-						&nbsp;&nbsp;&nbsp;
-					<a th:href="@{/delete/ +${aCustomer.customerId}}">Delete</a>  
-					</td> -->
+					
+					<a th:href="@{'/users/delete/'+${aUser.userId}}">Delete</a>  
+					</td>  
 					
 					</tr> 
 				</tbody>

@@ -20,6 +20,85 @@
  -->
 </head>
 
+<style>
+@import url('https://fonts.googleapis.com/css?family=Oswald|Sigmar+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cinzel|Oswald|Righteous|Sigmar+One&display=swap');
+
+.navbar{
+    background: grey;
+    
+  }
+  li {
+    display: inline;
+    padding:10px;
+    
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#FFD17C;
+    font-family: 'Oswald', sans-serif;
+font-family: 'Sigmar One', cursive;
+font-family: 'Righteous', cursive;
+font-family: 'Cinzel', serif;
+border-style: inset;
+border-block-color: black;
+
+  }
+  
+  li {
+    float: left;
+    border-right:1px solid #bbb;
+  }
+  
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+  }
+  
+  .navbar-heading{
+    float:center;
+    font-size:30px;
+    font-family: 'Oswald', sans-serif;
+    font-family: 'Sigmar One', cursive;
+    font-style: italic;
+    margin: 10px;
+    border-left: 10px;
+    letter-spacing: 2px;
+    /* direction: rtl; */
+    text-shadow: 3px 2px white;
+    vertical-align: text-top;
+    padding-left: 50px;
+  }
+
+  .copywrite{
+    font-size:10px;
+  }
+
+
+
+</style>
+
+
+
 
 <nav th:fragment="navbar"
 	class="navbar navbar-expand-lg navbar-dark bg-warning">
@@ -32,7 +111,9 @@
 
 	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-			<li class="nav-item active"><a class="nav-link" th:href="@{/}">Home</a>
+			<li class="nav-item active"><a class="nav-link" th:href="@{http://localhost:3000/}">React Home</a>
+			</li>
+			<li class="nav-item active"><a class="nav-link" th:href="@{/}">Java Home</a>
 			</li>
 		<!-- 	<li class="nav-item"><a class="nav-link" 
 				th:href="@{/users}">Users</a>

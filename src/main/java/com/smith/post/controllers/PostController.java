@@ -33,7 +33,7 @@ public class PostController {
 	return "posts/list-posts";
 	}
 	
-	//base controller before list-events is implimented
+	//base controller before list-events is implemented
 	@GetMapping("/new")
 	public String displayPostForm(Model model) {
 		Post aPost = new Post();

@@ -28,6 +28,7 @@ public class HomeController {
 	UserRepository userRepo;
 
 	@GetMapping("/")
+//	@GetMapping("localhost://3000")
 	public String displayHome(Model model) {
 		//this key has to be the same as the key in the home page
 		List<Post>posts = postRepo.findAll();
@@ -43,6 +44,7 @@ public class HomeController {
 		model.addAttribute("usersList", users);
 		
 		return "main/home";
+//		return "http://localhost/3000";
 	}
 	
 	
