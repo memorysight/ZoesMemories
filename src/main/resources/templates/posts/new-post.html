@@ -62,12 +62,14 @@ select {
 
 	<div class="container">
 		<!-- 	the object must be the same as Model object  -->
-		<form action="/posts/save" th:object="${post}" method="POST">
+		<form th:action="${update ? '/posts/update/': '/posts/save/'}" th:object="${post}" method="POST">
+		
 		<br>
 		<br>
 	
-	
-		<h3>Create a Sleak!</h3>
+		<input type="hidden" th:field="${post.postId}" name="postId">
+		
+		<h3>Create a Post!</h3>
 		<input type="text" placeholder="Post name" th:field="${post.title}">
 		<br>
 		
@@ -106,8 +108,11 @@ select {
 			</select>
 			
 
-			<button th:href="@{/http://localhost:3000/posts}"type="submit">Will they LOL?</button>
-
+			
+			 <button th:href="@{/http://localhost:3000/posts}"type="submit" th:text="${update ? 'Update Post':'Create Post'}"></button>
+ 
+		<!-- 	<button type="submit" th:text="${update ? 'Update':'Create'}"></button> -->
+		
 		</form>
 	</div>
 

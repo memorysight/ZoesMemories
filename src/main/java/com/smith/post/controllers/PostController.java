@@ -1,11 +1,13 @@
 package com.smith.post.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -40,21 +42,41 @@ public class PostController {
 		
 		List<User> users = userRepo.findAll();  //new
 		model.addAttribute("allUsers", users);
-		
-		
+		model.addAttribute("update", false);
 		model.addAttribute("post", aPost);
 		return "posts/new-post";
 		
 	}
 	
+	@GetMapping("/update/{id}")
+	public String getById(Model model, @PathVariable("id") Long id) {
+		
+		List<User> users = userRepo.findAll();
+		model.addAttribute("allUsers",users);
+		model.addAttribute("update",true);
+		Optional<Post>aPost = postRepo.findById(id);
+	
+		if(aPost.isPresent()) {
+			model.addAttribute("post", aPost);
+			return "posts/new-post";
+		}else {
+			return "error";
+		}
+	}
+	
+	@PostMapping("/update")
+	public String updateById(Post post) {
+		postRepo.save(post);
+		return "redirect:http://localhost:3000/posts";
+	}
+	
 	@PostMapping("/save")
 	public String createPostForm(Post post, Model model) {
-		//this should handle the saving to the database
-		
-		//use to prevent duplicate submissions
+
 		postRepo.save(post);
 //		return "redirect:/posts/new"; redirects back to thymeleaf
 		return "redirect:http://localhost:3000/posts";
+//		return "redirect:/posts";
 		
 	}
 	
