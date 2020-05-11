@@ -66,8 +66,27 @@ public class PostController {
 	
 	@PostMapping("/update")
 	public String updateById(Post post) {
-		postRepo.save(post);
-		return "redirect:http://localhost:3000/posts";
+		Optional<Post>aPost = postRepo.findById(post.getPostId());
+		
+		if(aPost.isPresent()) {
+			Post existingPost = aPost.get();
+			existingPost.setBody(post.getBody());
+			existingPost.setConfidence(post.getConfidence());
+			existingPost.setDate(post.getDate());
+			existingPost.setImage(post.getImage());
+			existingPost.setMoney(post.getMoney());
+			existingPost.setPostId(post.getPostId());
+			existingPost.setTitle(post.getTitle());
+			existingPost.setUsers(post.getUsers());
+
+			postRepo.save(aPost.get());
+			
+			return "redirect:http://localhost:3000/posts";
+		}else {
+			return "error";
+		}
+		
+		
 	}
 	
 	@PostMapping("/save")

@@ -20,7 +20,6 @@ import com.smith.post.repositories.PostRepository;
 import com.smith.post.repositories.UserRepository;
 
 
-
 @Controller
 @RequestMapping("/users")
 public class UserController {

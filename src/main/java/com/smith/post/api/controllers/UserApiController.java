@@ -26,6 +26,7 @@ public class UserApiController {
 	@Autowired
 	UserRepository userRepo;
 	
+
 	@CrossOrigin("http://localhost:3000")
 	@GetMapping
 	public Iterable<User> getUsers(){
@@ -43,6 +44,7 @@ public class UserApiController {
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public User create(@RequestBody User user) {
+		System.out.println("Posts " + user.getPosts()); 
 		return userRepo.save(user);
 	}
 	
