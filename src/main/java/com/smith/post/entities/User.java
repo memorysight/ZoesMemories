@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -24,11 +24,11 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private String password;
-	private String role;
+	private String password;	
+	private String role;			
 	private String image;
-	
-	@JsonIgnore
+//	
+//	 @JsonIgnore
 	@ManyToMany(cascade = {CascadeType.DETACH, 
 			CascadeType.MERGE, 
 			CascadeType.REFRESH, 
@@ -36,16 +36,17 @@ public class User {
 			@JoinTable(name="user_post",
 			joinColumns=@JoinColumn(name="user_id"),
 			inverseJoinColumns=@JoinColumn(name="post_id"))
-	private List<Post>Posts;
+	private List<Post>posts;
+	
 	
 	
 
 	public List<Post> getPosts() {
-		return Posts;
+		return posts;
 	}
 
 	public void setPosts(List<Post> posts) {
-		Posts = posts;
+		this.posts = posts;
 	}
 
 	public Long getUserId() {
@@ -128,7 +129,7 @@ public class User {
 		this.password = password;
 		this.role = role;
 		this.image = image;
-		Posts = posts;
+		this.posts = posts;
 	}
 
 	public User() {

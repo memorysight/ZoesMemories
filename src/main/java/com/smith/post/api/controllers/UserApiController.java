@@ -1,5 +1,9 @@
 package com.smith.post.api.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -14,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.smith.post.entities.Post;
 import com.smith.post.entities.User;
+import com.smith.post.repositories.PostRepository;
 import com.smith.post.repositories.UserRepository;
 
 
@@ -27,6 +33,9 @@ public class UserApiController {
 	UserRepository userRepo;
 	
 
+	@Autowired
+	PostRepository postRepo;
+	
 	@CrossOrigin("http://localhost:3000")
 	@GetMapping
 	public Iterable<User> getUsers(){
@@ -38,13 +47,21 @@ public class UserApiController {
 	public User getUserById(@PathVariable("userId") Long id) {
 		return userRepo.findById(id).get();
 		
-	}
+	}			
 	
-	@CrossOrigin("http://localhost:3000")
+	@CrossOrigin("http://localhost:3000")	
 	@PostMapping(consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
 	public User create(@RequestBody User user) {
-		System.out.println("Posts " + user.getPosts()); 
+		List<Post> uiPosts = user.getPosts(); 
+		List<Post> dbPosts = new ArrayList<>(); 
+		for (Post post : uiPosts) {
+			Optional<Post>foundPost = postRepo.findById(post.getPostId());
+			if(foundPost.isPresent()) {
+				dbPosts.add(foundPost.get());
+			}
+		}
+		user.setPosts(dbPosts);
 		return userRepo.save(user);
 	}
 	

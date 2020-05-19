@@ -55,7 +55,6 @@ public class Post {
 	@JoinTable(name="user_post",
 	joinColumns=@JoinColumn(name="post_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id"))
-	
 	private List<User> users;
 	
 

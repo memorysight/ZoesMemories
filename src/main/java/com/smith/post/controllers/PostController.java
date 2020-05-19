@@ -27,7 +27,7 @@ public class PostController {
 	@Autowired
 	UserRepository userRepo;
 	
-	//this is new to the base controller to add list-users table page
+
 	@GetMapping
 	public String displayPosts(Model model) {
 	List<Post>posts = postRepo.findAll();
@@ -35,12 +35,12 @@ public class PostController {
 	return "posts/list-posts";
 	}
 	
-	//base controller before list-events is implemented
+	
 	@GetMapping("/new")
 	public String displayPostForm(Model model) {
 		Post aPost = new Post();
 		
-		List<User> users = userRepo.findAll();  //new
+		List<User> users = userRepo.findAll();  
 		model.addAttribute("allUsers", users);
 		model.addAttribute("update", false);
 		model.addAttribute("post", aPost);
