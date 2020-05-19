@@ -40,11 +40,11 @@ public class User {
 	
 	
 	
-
+	// this used to Posts
 	public List<Post> getPosts() {
 		return posts;
 	}
-
+	//this used to be Posts = posts;
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
