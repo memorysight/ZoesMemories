@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Response</title>
+</head>
+<body>
+<form action="/responses" method="post" th:object="${response}">
+    <label for="text" th:text="Text:">Text:</label>
+    <input type="text" id="text" name="text" th:field="*{text}">
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

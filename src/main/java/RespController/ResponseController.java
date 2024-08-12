@@ -2,19 +2,20 @@ package RespController;
 
 import Model.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import ResponseService.ResponseService;
 
-@RestController
+@Controller
+@RequestMapping("/responses")
 public class ResponseController {
 
     @Autowired
     private ResponseService responseService;
 
-    @PostMapping("/responses")
-    public void saveResponse(@RequestBody Response response) {
+    @PostMapping
+    public String saveResponse(@RequestBody Response response) {
         responseService.saveResponse(response);
+        return "redirect:/";
     }
 }

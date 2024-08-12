@@ -1,0 +1,3 @@
+INSERT INTO RESPONSES VALUES (1, 'new day');    
+INSERT INTO RESPONSES VALUES (2, 'today');    
+INSERT INTO RESPONSES VALUES (3, 'tomorrow');    
